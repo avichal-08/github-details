@@ -53,11 +53,19 @@ function flrs(f){
          const data1=JSON.parse(this.responseText)
          let n=data1.length;
          nflr(n)
+         lflr(data1)
         }
     }
     xhr1.send();
     function nflr(number){
         document.querySelector('#Nfollowers').innerHTML=`<h1>No of followers :${number}</h1>`
+    }
+    function lflr(d){
+        document.querySelector('#Lfollowers').innerHTML=`<h1>Username of follower:</h1>`
+        d.forEach( function( item){
+            let id=item.login
+            document.querySelector('#Lfollowers').innerHTML+=`<p>${id}</p>`
+        })
     }
 }
 }
