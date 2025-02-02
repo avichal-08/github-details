@@ -64,7 +64,8 @@ function flrs(f){
         document.querySelector('#Lfollowers').innerHTML=`<h1>Username of follower:</h1>`
         d.forEach( function( item){
             let id=item.login
-            document.querySelector('#Lfollowers').innerHTML+=`<p>${id}</p>`
+            let followers_url=`https://github.com/`+id
+            document.querySelector('#Lfollowers').innerHTML+=`<p><a href="${followers_url}">${id}</a></p>`
         })
     }
 }
