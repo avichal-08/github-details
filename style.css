@@ -1,0 +1,35 @@
+*{
+    background-color:rgba(34, 174, 209, 0.829);
+    color:black;
+}
+.container{
+    margin: 10px;
+}
+#username{
+    height:20px;
+    width:150px;
+    background-color: white;
+    margin:10px;
+    border:2px solid black;
+}
+#input{
+    height:20px;
+    width:50px;
+    margin:10px;
+    color:black;
+    background-color: white;
+    border:2px solid black;
+}
+#photo{
+    margin: 10px;
+    /* width:60px;
+    height:60px; */
+}
+#repo{
+    margin: 10px;
+    font-size:30px;
+}
+#twitter{
+    margin: 10px;
+    font-size:30px;
+}
