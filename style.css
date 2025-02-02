@@ -1,6 +1,7 @@
-*{
+.container{
     background-color:rgba(34, 174, 209, 0.829);
     color:black;
+    width:40%; 
 }
 .container{
     margin: 10px;
@@ -8,7 +9,7 @@
 #username{
     height:20px;
     width:150px;
-    background-color: white;
+    background-color: white; 
     margin:10px;
     border:2px solid black;
 }
