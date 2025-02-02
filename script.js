@@ -1,4 +1,5 @@
 const search=document.querySelector('#username')
+let furl
 let twurl
 let tw
 let url1
@@ -22,6 +23,8 @@ xhr.onreadystatechange=function(){
         let rps=data.repos_url
         tw=data.twitter_username
         twurl='https://x.com/'+tw
+        furl=data.followers_url
+        flrs(furl)
         imgshow(imgUrl)
         name(data.name)
         repo(rps)
@@ -41,5 +44,20 @@ function repo(r){
 function twitt(t){
 document.querySelector('#twitter').innerHTML=`<a href="${t}">Twitter</a>`
 tw=''
+}
+function flrs(f){
+    const xhr1=new XMLHttpRequest()
+    xhr1.open('GET',f)
+    xhr1.onreadystatechange=function(){
+        if(xhr1.readyState===4){
+         const data1=JSON.parse(this.responseText)
+         let n=data1.length;
+         nflr(n)
+        }
+    }
+    xhr1.send();
+    function nflr(number){
+        document.querySelector('#Nfollowers').innerHTML=`<h1>No of followers :${number}</h1>`
+    }
 }
 }
