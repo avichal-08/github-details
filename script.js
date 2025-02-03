@@ -6,6 +6,8 @@ let url1
 let url
 let username
 document.querySelector('#input').addEventListener('click',function(e){
+    document.querySelector('#twitter').innerHTML=``
+    document.querySelector('#Lfollowers').innerHTML=``
    username=search.value 
     if(username) print(username)
 })
@@ -39,7 +41,28 @@ function name(n){
     document.querySelector('#name').innerHTML=`<h1>NAME:${n}</h1>`
 }
 function repo(r){
-    document.querySelector('#repo').innerHTML=`<a href="${r}">Repositories</a>`
+    const xhr2=new XMLHttpRequest()
+    xhr2.open('GET',r)
+    xhr2.onreadystatechange=function(){
+        if(xhr2.readyState===4){
+         const data2=JSON.parse(this.responseText)
+         let n=data2.length;
+         nrepo(n)
+         lrepo(data2)
+        }
+    }
+    xhr2.send();
+    function nrepo(n){
+        document.querySelector('#repo').innerHTML=`<p1>No of public repositories :${n}</br></p1>`
+}
+function lrepo(Rarr){
+    document.querySelector('#repo').innerHTML+=`<p2>Name of repositories:</p2></br>`
+        Rarr.forEach( function( item){
+            let nam=item.name
+            let followers_url=`https://github.com/`+item.full_name
+            document.querySelector('#repo').innerHTML+=`<p3><a href="${followers_url}">${nam}</a></br></p3>`
+        })
+}
 }
 function twitt(t){
 document.querySelector('#twitter').innerHTML=`<a href="${t}">Twitter</a>`
@@ -53,12 +76,12 @@ function flrs(f){
          const data1=JSON.parse(this.responseText)
          let n=data1.length;
          nflr(n)
-         lflr(data1)
+         if(n)lflr(data1)
         }
     }
     xhr1.send();
     function nflr(number){
-        document.querySelector('#Nfollowers').innerHTML=`<h1>No of followers :${number}</h1>`
+        document.querySelector('#Nfollowers').innerHTML=`<p1>No of followers :${number}</p1>`
     }
     function lflr(d){
         document.querySelector('#Lfollowers').innerHTML=`<h1>Username of follower:</h1>`
